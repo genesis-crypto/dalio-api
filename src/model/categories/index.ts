@@ -8,4 +8,15 @@ const getAll = async () => {
     }
 };
 
-export { getAll };
+const getFromUser = async (id: number) => {
+    try {
+        return await db("category")
+            .select("*")
+            .where("id_user", "=", id)
+            .limit(40);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, getFromUser };

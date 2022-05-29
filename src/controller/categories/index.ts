@@ -1,3 +1,3 @@
-import { getAllCategories } from "./getCategories";
+import { getAllCategories, getUserCategories } from "./getCategories";
 
-export { getAllCategories };
+export { getAllCategories, getUserCategories };
