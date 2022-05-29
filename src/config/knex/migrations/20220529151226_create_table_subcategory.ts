@@ -1,0 +1,14 @@
+import { Knex } from "knex";
+
+export async function up(knex: Knex): Promise<void> {
+    return await knex.schema.createTable("subcategory", (table) => {
+        table.increments("id");
+        table.string("nome").notNullable();
+        table.string("description").notNullable();
+        table.integer("id_category").references("id").inTable("category");
+    });
+}
+
+export async function down(knex: Knex): Promise<void> {
+    return await knex.schema.dropTableIfExists("subcategory");
+}
