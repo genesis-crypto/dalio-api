@@ -44,4 +44,10 @@ npm run database:populate
 
 > Script para popular o banco criado com as tables
 
+```
+npm run database:fill
+```
+
+> Script para inserir dados iniciais nas tables criadas
+
 ## API

@@ -7,6 +7,7 @@
     "docker:up": "docker-compose up",
     "database:create": "docker exec -i dalio-api_postgres-database_1 psql -U postgres -c 'CREATE DATABASE dalio'",
     "database:populate": "npx knex --knexfile src/config/knex/knexfile.ts migrate:latest",
+    "database:fill": "npx knex --knexfile src/config/knex/knexfile.ts seed:run",
     "dev": "ts-node src"
   },
   "keywords": [],
