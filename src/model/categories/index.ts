@@ -41,4 +41,26 @@ const createCategory = async ({
     }
 };
 
-export { getAll, getFromUser, createCategory };
+const refactorCategory = async ({
+    id,
+    payload,
+}: {
+    id: string;
+    payload: Partial<{
+        nome: string;
+        description: string;
+        id_user: string;
+    }>;
+}) => {
+    try {
+        return await db("category")
+            .update(payload)
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, getFromUser, createCategory, refactorCategory };
