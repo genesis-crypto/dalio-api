@@ -19,4 +19,23 @@ const getFromCategory = async ({ ids }: { ids: number[] }) => {
     }
 };
 
-export { getAll, getFromCategory };
+const createSubcategory = async ({
+    nome,
+    description,
+    id_category,
+}: {
+    nome: string;
+    description: string;
+    id_category: string;
+}) => {
+    try {
+        return await db("subcategory")
+            .insert({ nome, description, id_category })
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, getFromCategory, createSubcategory };
