@@ -1,3 +1,4 @@
 import { getAllCategories, getUserCategories } from "./getCategories";
+import { postCategory } from "./postCategory";
 
-export { getAllCategories, getUserCategories };
+export { getAllCategories, getUserCategories, postCategory };

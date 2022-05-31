@@ -16,7 +16,7 @@ const getUserCategories = async (req: Request, res: Response) => {
     try {
         const { id } = req.query as { id?: number };
 
-        if (!id) {
+        if (typeof id === "undefined") {
             throw new Error("missing arguments");
         }
 

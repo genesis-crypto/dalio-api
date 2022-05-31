@@ -19,10 +19,7 @@ const insertUser = async ({
         return await db("users")
             .insert({ nome: nome, image_url: image_url })
             .then(() => true)
-            .catch((err) => {
-                console.log(err);
-                return false;
-            });
+            .catch(() => false);
     } catch (err) {
         return new Error("something get wrong");
     }
