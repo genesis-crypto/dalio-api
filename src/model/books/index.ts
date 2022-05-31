@@ -27,4 +27,22 @@ const createBook = async ({
     }
 };
 
-export { getAll, createBook };
+const refactorBook = async ({
+    id,
+    payload,
+}: {
+    id: string;
+    payload: Partial<{ nome: string; description: string; image_url: string }>;
+}) => {
+    try {
+        return await db("books")
+            .update(payload)
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, createBook, refactorBook };
