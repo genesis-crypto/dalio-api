@@ -1,3 +1,4 @@
 import { postSubcategory } from "./postSubcategory";
+import { updateSubcategory } from "./updateSubcategory";
 
-export { postSubcategory };
+export { postSubcategory, updateSubcategory };

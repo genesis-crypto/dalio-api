@@ -38,4 +38,26 @@ const createSubcategory = async ({
     }
 };
 
-export { getAll, getFromCategory, createSubcategory };
+const refactorSubcategory = async ({
+    id,
+    payload,
+}: {
+    id: string;
+    payload: Partial<{
+        nome: string;
+        description: string;
+        id_category: string;
+    }>;
+}) => {
+    try {
+        return await db("subcategory")
+            .update(payload)
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, getFromCategory, createSubcategory, refactorSubcategory };
