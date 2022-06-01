@@ -45,4 +45,16 @@ const refactorBook = async ({
     }
 };
 
-export { getAll, createBook, refactorBook };
+const removeBook = async ({ id }: { id: string }) => {
+    try {
+        return await db("books")
+            .delete()
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, createBook, refactorBook, removeBook };
