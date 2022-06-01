@@ -37,4 +37,25 @@ const removeUser = async ({ id }: { id: string }) => {
     }
 };
 
-export { getAll, insertUser, removeUser };
+const refactorUser = async ({
+    id,
+    payload,
+}: {
+    id: string;
+    payload: Partial<{
+        nome: string;
+        image_url: string;
+    }>;
+}) => {
+    try {
+        return await db("users")
+            .update(payload)
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, insertUser, removeUser, refactorUser };
