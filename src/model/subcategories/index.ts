@@ -62,6 +62,11 @@ const refactorSubcategory = async ({
 
 const removeSubcategory = async ({ id }: { id: string }) => {
     try {
+        return await db("subcategory")
+            .delete()
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
     } catch (err) {
         return new Error("something get wrong");
     }

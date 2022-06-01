@@ -63,4 +63,25 @@ const refactorCategory = async ({
     }
 };
 
-export { getAll, getFromUser, createCategory, refactorCategory };
+const removeCategory = async ({ id }: { id: string }) => {
+    try {
+        return await db("category")
+            .delete()
+            .where("id", "=", id)
+            .then(() => true)
+            .catch((e) => {
+                console.log(e);
+                return false;
+            });
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export {
+    getAll,
+    getFromUser,
+    createCategory,
+    refactorCategory,
+    removeCategory,
+};

@@ -5,7 +5,11 @@ export async function up(knex: Knex): Promise<void> {
         table.increments("id");
         table.string("nome").notNullable();
         table.text("description").notNullable();
-        table.integer("id_category").references("id").inTable("category");
+        table
+            .integer("id_category")
+            .references("id")
+            .inTable("category")
+            .onDelete("CASCADE");
     });
 }
 
