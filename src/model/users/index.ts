@@ -25,4 +25,16 @@ const insertUser = async ({
     }
 };
 
-export { getAll, insertUser };
+const removeUser = async ({ id }: { id: string }) => {
+    try {
+        return await db("users")
+            .delete()
+            .where("id", "=", id)
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, insertUser, removeUser };
