@@ -60,4 +60,17 @@ const refactorSubcategory = async ({
     }
 };
 
-export { getAll, getFromCategory, createSubcategory, refactorSubcategory };
+const removeSubcategory = async ({ id }: { id: string }) => {
+    try {
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export {
+    getAll,
+    getFromCategory,
+    createSubcategory,
+    refactorSubcategory,
+    removeSubcategory,
+};
