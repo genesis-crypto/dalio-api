@@ -37,6 +37,7 @@ const getUserCategories = async (req: Request, res: Response) => {
                     category: string;
                     category_description: string;
                     subcategory: {
+                        id: number;
                         subcategory: string;
                         subcategory_description: string;
                     }[];
@@ -48,6 +49,7 @@ const getUserCategories = async (req: Request, res: Response) => {
                 const filterSubcategory = subcategories
                     ?.filter((item) => item.id_category == category.id)
                     ?.map((sub) => ({
+                        id: sub.id,
                         subcategory: sub.nome,
                         subcategory_description: sub.description,
                     }));
