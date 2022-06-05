@@ -32,10 +32,7 @@ const createCategory = async ({
         return await db("category")
             .insert({ nome, description, id_user })
             .then(() => true)
-            .catch((err) => {
-                console.log(err);
-                return false;
-            });
+            .catch(() => false);
     } catch (err) {
         return new Error("something get wrong");
     }

@@ -16,7 +16,6 @@ const postUser = async (req: Request, res: Response) => {
 
         return res.status(200).send({ code: 200, data: created });
     } catch (err) {
-        console.log(err);
         throw new Error("Crash");
     }
 };

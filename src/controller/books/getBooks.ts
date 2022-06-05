@@ -9,7 +9,7 @@ const getAllBooks = async (req: Request, res: Response) => {
             description: string;
             image_url: string;
         }[];
-        console.log(`books`, books);
+
         if (typeof books !== "undefined") {
             const response = await Promise.all(
                 books.map(async (item) => {
