@@ -58,4 +58,24 @@ const refactorUser = async ({
     }
 };
 
-export { getAll, insertUser, removeUser, refactorUser };
+const suggestBookUser = async ({
+    idBook,
+    idUser,
+}: {
+    idUser: number;
+    idBook: number;
+}) => {
+    try {
+        return await db("user_books")
+            .insert({
+                id_user: idUser,
+                id_book: idBook,
+            })
+            .then(() => true)
+            .catch(() => false);
+    } catch (err) {
+        return new Error("something get wrong");
+    }
+};
+
+export { getAll, insertUser, removeUser, refactorUser, suggestBookUser };
