@@ -57,4 +57,11 @@ const removeBook = async ({ id }: { id: string }) => {
     }
 };
 
-export { getAll, createBook, refactorBook, removeBook };
+const getNumberSuggestions = async ({ id }: { id: string | number }) => {
+    return await db("user_books")
+        .count("*")
+        .groupBy("id_book")
+        .where("id_book", "=", id);
+};
+
+export { getAll, createBook, refactorBook, removeBook, getNumberSuggestions };
